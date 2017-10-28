@@ -1,0 +1,20 @@
+version: '3'
+networks:
+  shared-network:
+    driver: bridge
+services:
+  rabbitmq:
+    networks:
+      - shared-network
+    image: 'rabbitmq:3.6.6-management'
+    environment:
+      - RABBITMQ_LOGS=/var/log/rabbitmq/rabbit.log
+    ports:
+      - 4369:4369
+      - 5672:5672
+      - 15672:15672
+      - 25672:25672
+      - 35197:35197
+    volumes:
+      - /Users/otoomx/workspace/rabbitmq/data:/var/lib/rabbit
+      - /Users/otoomx/workspace/rabbitmq/data/logs:/var/log/rabbit
